@@ -16,14 +16,14 @@ margin_bottom = 36.0
 [node name="CheckBox-L" type="CheckBox" parent="."]
 margin_left = 96.0
 margin_top = 8.0
-margin_right = 120.0
+margin_right = 131.0
 margin_bottom = 32.0
 text = "L"
 
-[node name="CheckBox_R" type="CheckBox" parent="."]
+[node name="CheckBox-R" type="CheckBox" parent="."]
 margin_left = 131.0
 margin_top = 8.0
-margin_right = 155.0
+margin_right = 167.0
 margin_bottom = 32.0
 text = "R"
 
@@ -35,6 +35,7 @@ margin_bottom = 32.0
 text = "U"
 
 [node name="CheckBox-D" type="CheckBox" parent="."]
+modulate = Color( 0.231373, 0.231373, 0.231373, 1 )
 margin_left = 208.0
 margin_top = 8.0
 margin_right = 232.0
@@ -48,4 +49,8 @@ margin_right = 297.0
 margin_bottom = 30.0
 text = "X"
 
+[connection signal="pressed" from="CheckBox-L" to="." method="_on_CheckBoxL_pressed"]
+[connection signal="pressed" from="CheckBox-R" to="." method="_on_CheckBoxR_pressed"]
+[connection signal="pressed" from="CheckBox-U" to="." method="_on_CheckBoxU_pressed"]
+[connection signal="pressed" from="CheckBox-D" to="." method="_on_CheckBoxD_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
