@@ -5,19 +5,21 @@ var item_tmp = preload("res://Prefabs/ItemTemplate/RuleItem.tscn")
 var rules_loop = []
 var move_vector = Vector2(0,-1)
 
-var ant_pos = Vector2(128,128)
+var ant_pos = Vector2(64,64)
 var paint:Image
 var render:bool = false;
 var sim_step:int = 0
 var itex = ImageTexture.new()    
 var lbl_step:Label
+var iw = 128
+var ih = 128
 
 enum eDirection { TO_LEFT = -1, STOP = 0,TO_RIGHT=1 }
 func _ready():
 	
 	self.itemList = get_node("Panel-control/ScrollContainer/ItemList")
 	self.paint = Image.new()	
-	self.paint.create(256,256,false,Image.FORMAT_RGBA8)
+	self.paint.create(self.iw,self.ih,false,Image.FORMAT_RGBA8)
 	
 	get_node("Panel-control/ScrollContainer/ItemList/RuleItem 0/ColorPickerButton").color = Color.white
 	get_node("Panel-control/ScrollContainer/ItemList/RuleItem 1/ColorPickerButton").color = Color.red
@@ -134,10 +136,10 @@ func _on_ButtonSTOP_pressed():
 
 func ResetSim():
 	self.sim_step = 0
-	self.ant_pos = Vector2(128,128)
+	self.ant_pos = Vector2(64,64)
 	self.paint.lock()
-	for x in range(256):
-		for y in range(256):
+	for x in range(self.iw):
+		for y in range(self.ih):
 			self.paint.set_pixel(x,y,Color(1,1,1,1))
 	self.paint.unlock()
 	pass
@@ -149,7 +151,7 @@ func GetRuleID(c):
 
 func SimStep():
 	
-	if (ant_pos.x>0 and ant_pos.x<256 and ant_pos.y>0 and ant_pos.y<256): 
+	if (ant_pos.x>0 and ant_pos.x<self.iw and ant_pos.y>0 and ant_pos.y<self.ih): 
 	
 #		var idx = self.sim_step % self.rules_loop.size()
 		self.sim_step += 1	
