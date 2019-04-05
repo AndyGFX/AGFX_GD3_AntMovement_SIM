@@ -4,4 +4,9 @@ https://www.youtube.com/watch?v=1X-gtr4pEBU&list=PLzckcn40n8yGJNGg_-zdZKld7a8_NJ
 
 Screenshots:
 
+![Alt text](Screenshots/Godot_v3.1-stable_win64_2019-04-05_18-23-34.png?raw=true "PREVIEW")
 
+![Alt text](Screenshots/Godot_v3.1-stable_win64_2019-04-05_18-20-01.png?raw=true "PREVIEW")
+
+Note:
+- always when is added new rule you must pres REBUILD button
