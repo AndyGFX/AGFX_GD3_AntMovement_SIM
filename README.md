@@ -9,4 +9,4 @@ Screenshots:
 ![Alt text](screenshots/Godot_v3.1-stable_win64_2019-04-05_18-20-01.png?raw=true "PREVIEW")
 
 Note:
-- always when is added new rule you must pres REBUILD button
+- always when is added new rule you must press REBUILD button
