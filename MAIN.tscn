@@ -31,18 +31,18 @@ margin_top = 40.0
 margin_right = 0.0
 
 [node name="Button-BUILD" type="Button" parent="Panel-control"]
-margin_left = 16.0
+margin_left = 10.0
 margin_top = 544.0
-margin_right = 136.0
+margin_right = 120.0
 margin_bottom = 564.0
 text = "Rebuild"
 
 [node name="Button-START" type="Button" parent="Panel-control"]
-margin_left = 164.0
+margin_left = 200.0
 margin_top = 544.0
-margin_right = 239.0
+margin_right = 255.0
 margin_bottom = 564.0
-text = "START"
+text = "RUN"
 
 [node name="Button-ADD" type="Button" parent="Panel-control"]
 margin_left = 244.0
@@ -52,24 +52,40 @@ margin_bottom = 524.0
 text = "Add rule"
 
 [node name="Button-STOP" type="Button" parent="Panel-control"]
-margin_left = 244.0
+margin_left = 260.0
 margin_top = 544.0
 margin_right = 317.0
 margin_bottom = 564.0
 text = "STOP"
 
+[node name="Button-STEP" type="Button" parent="Panel-control"]
+margin_left = 150.0
+margin_top = 544.0
+margin_right = 192.0
+margin_bottom = 564.0
+text = "STEP"
+
+[node name="Button-P1" type="Button" parent="Panel-control"]
+margin_left = 13.0
+margin_top = 504.0
+margin_right = 40.0
+margin_bottom = 524.0
+text = "P1"
+
 [node name="Panel" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 336.0
 margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="AntArena" type="Sprite" parent="Panel"]
-position = Vector2( 80, 46 )
+position = Vector2( 364, 290 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
-centered = false
 
 [connection signal="pressed" from="Panel-control/Button-BUILD" to="." method="_on_ButtonBUILD_pressed"]
 [connection signal="pressed" from="Panel-control/Button-START" to="." method="_on_ButtonSTART_pressed"]
 [connection signal="pressed" from="Panel-control/Button-ADD" to="." method="_on_ButtonADD_pressed"]
 [connection signal="pressed" from="Panel-control/Button-STOP" to="." method="_on_ButtonSTOP_pressed"]
+[connection signal="pressed" from="Panel-control/Button-STEP" to="." method="_on_ButtonSTEP_pressed"]
+[connection signal="pressed" from="Panel-control/Button-P1" to="." method="_on_ButtonP1_pressed"]

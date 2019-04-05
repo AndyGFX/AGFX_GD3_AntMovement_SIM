@@ -24,7 +24,7 @@ func _on_Button_pressed():
 		
 	var id = 0
 	for item in get_parent().get_children():
-		print(item.name)
+		
 		item.name = "Item "+String(id)
 		id=id+1
 		
