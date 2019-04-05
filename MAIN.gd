@@ -10,6 +10,7 @@ var paint:Image
 var render:bool = false;
 var sim_step:int = 0
 var itex = ImageTexture.new()    
+var lbl_step:Label
 
 enum eDirection { TO_LEFT = -1, STOP = 0,TO_RIGHT=1 }
 func _ready():
@@ -28,7 +29,7 @@ func _ready():
 	$"Panel-control/Button-STOP".disabled = true
 	$"Panel-control/Button-STEP".disabled = true
 	
-	
+	self.lbl_step = get_node("Panel/Label-STEP")
 	self.ResetSim()
 	self.UpdateTexture()
 	
@@ -152,30 +153,32 @@ func SimStep():
 	
 #		var idx = self.sim_step % self.rules_loop.size()
 		self.sim_step += 1	
-
+		self.lbl_step.text = "Step: "+String(self.sim_step)
 		# get direction for current color
 		var current_ant_pos = self.ant_pos
 		self.paint.lock()
 		var pixel_color = self.paint.get_pixel(current_ant_pos.x,current_ant_pos.y)
 		self.paint.unlock()
 		var rule = self.GetRuleID(pixel_color)
-		rule["Call"] +=1
-		get_node("Panel-control/ScrollContainer/ItemList/"+rule["Name"]+"/LabelUse").text = String(rule["Call"])
+		
+		if (rule!=null):
+			rule["Call"] +=1
+			get_node("Panel-control/ScrollContainer/ItemList/"+rule["Name"]+"/LabelUse").text = String(rule["Call"])
+				
+			match rule["Direction"]:
+				eDirection.TO_LEFT: self.TurnLeft()
+				eDirection.TO_RIGHT: self.TurnRight()
+	
+			self.ant_pos = self.ant_pos + self.move_vector
 			
-		match rule["Direction"]:
-			eDirection.TO_LEFT: self.TurnLeft()
-			eDirection.TO_RIGHT: self.TurnRight()
-
-		self.ant_pos = self.ant_pos + self.move_vector
-		
-		# get new color to change current pixel position
-		var idx = (rule["ID"]+1) % self.rules_loop.size()
-		var new_color = self.rules_loop[idx]["Color"]
-		
-		# set new color on current ant position
-		self.paint.lock()
-		self.paint.set_pixel(current_ant_pos.x,current_ant_pos.y,new_color)
-		self.paint.unlock()
+			# get new color to change current pixel position
+			var idx = (rule["ID"]+1) % self.rules_loop.size()
+			var new_color = self.rules_loop[idx]["Color"]
+			
+			# set new color on current ant position
+			self.paint.lock()
+			self.paint.set_pixel(current_ant_pos.x,current_ant_pos.y,new_color)
+			self.paint.unlock()
 		
 	else:
 		self.render = false
@@ -189,7 +192,7 @@ func _on_ButtonSTEP_pressed():
 func _on_ButtonP1_pressed():
 	print("PPP")
 	
-	for id in range(2,8):
+	for id in range(2,16):
 		var new_rule = item_tmp.instance()
 		var new_itemName = "RuleItem "+String(get_node("Panel-control/ScrollContainer/ItemList").get_child_count()-1)
 		new_rule.name = new_itemName
@@ -201,7 +204,13 @@ func _on_ButtonP1_pressed():
 		var item = get_node("Panel-control/ScrollContainer/ItemList/Item "+String(id))
 		
 		item.get_node("LabelUse").text = "00"
-		var color = 0.0625/8.0*float(id)
+		
+		if rand_range(-1,1)>0:
+			item.get_node("CheckBox-L").set_pressed(true)
+		else:
+			item.get_node("CheckBox-R").set_pressed(true)
+		
+		var color = 0.0625*float(id)
 		item.get_node("ColorPickerButton").color = Color(color,color,color,1)
 			
 	pass # Replace with function body.

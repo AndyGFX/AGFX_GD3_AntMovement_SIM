@@ -65,27 +65,25 @@ margin_right = 192.0
 margin_bottom = 564.0
 text = "STEP"
 
-[node name="Button-P1" type="Button" parent="Panel-control"]
-margin_left = 13.0
-margin_top = 504.0
-margin_right = 40.0
-margin_bottom = 524.0
-text = "P1"
-
 [node name="Panel" type="Panel" parent="."]
-editor/display_folded = true
 margin_left = 336.0
 margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="AntArena" type="Sprite" parent="Panel"]
-position = Vector2( 364, 290 )
+position = Vector2( 356, 288 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
+
+[node name="Label-STEP" type="Label" parent="Panel"]
+margin_left = 112.0
+margin_top = 560.0
+margin_right = 352.0
+margin_bottom = 574.0
+text = "Step:"
 
 [connection signal="pressed" from="Panel-control/Button-BUILD" to="." method="_on_ButtonBUILD_pressed"]
 [connection signal="pressed" from="Panel-control/Button-START" to="." method="_on_ButtonSTART_pressed"]
 [connection signal="pressed" from="Panel-control/Button-ADD" to="." method="_on_ButtonADD_pressed"]
 [connection signal="pressed" from="Panel-control/Button-STOP" to="." method="_on_ButtonSTOP_pressed"]
 [connection signal="pressed" from="Panel-control/Button-STEP" to="." method="_on_ButtonSTEP_pressed"]
-[connection signal="pressed" from="Panel-control/Button-P1" to="." method="_on_ButtonP1_pressed"]
