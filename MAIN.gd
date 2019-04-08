@@ -13,6 +13,7 @@ var itex = ImageTexture.new()
 var lbl_step:Label
 var iw = 128
 var ih = 128
+var sim_speed:int = 1
 
 enum eDirection { TO_LEFT = -1, STOP = 0,TO_RIGHT=1 }
 func _ready():
@@ -41,7 +42,8 @@ func _process(delta):
 	if (self.render):
 		
 		self.UpdateTexture()
-		self.SimStep()
+		for i in range(sim_speed):
+			self.SimStep()
 	
 
 	pass
@@ -216,3 +218,7 @@ func _on_ButtonP1_pressed():
 		item.get_node("ColorPickerButton").color = Color(color,color,color,1)
 			
 	pass # Replace with function body.
+
+
+func _on_SpinBoxSimSpeed_value_changed(value:int):
+	sim_speed = value
