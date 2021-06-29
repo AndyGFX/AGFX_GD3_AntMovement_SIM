@@ -81,6 +81,7 @@ margin_top = 560.0
 margin_right = 352.0
 margin_bottom = 574.0
 text = "Step:"
+
 [connection signal="pressed" from="Panel-control/Button-BUILD" to="." method="_on_ButtonBUILD_pressed"]
 [connection signal="pressed" from="Panel-control/Button-START" to="." method="_on_ButtonSTART_pressed"]
 [connection signal="pressed" from="Panel-control/Button-ADD" to="." method="_on_ButtonADD_pressed"]
